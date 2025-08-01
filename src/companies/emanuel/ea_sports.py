@@ -8,6 +8,11 @@ def fetch_ea_jobs():
     articles = soup.find_all(id=lambda x: x and x.startswith("article--"))
     articles = soup.find_all(id=lambda x: x and x.startswith("article--"))
     for a in articles:
-        listing = [line.strip() for line in a.text.split() if "senior" not in a.text.lower()]
+        title = a.find(class_="title").text.strip()
+        if title and "senior" in title.lower():
+            continue
+        location = a.find(class_="list-item-location").text.strip()
+        department = a.find(class_="list-item-department").text.strip()
+        listing = {"title":title, "location":location, "department":department}
         print(listing)
 
