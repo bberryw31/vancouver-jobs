@@ -1,35 +1,45 @@
-import requests
-from bs4 import BeautifulSoup
+# from companies.emanuel import
+from companies.jimmy import brace_yourself_games
 
 
-def check_brace_yourself_jobs():
-    url = 'https://braceyourselfgames.com/careers/'
+def run_emanuel():
+    """Run Emanuel's crawler"""
+    print("🔍 Running Emanuel's job crawler...")
+    scrapers = []
 
-    # Get the webpage
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
-
-    # Get all the text from the page
-    page_text = soup.get_text()
-
-    # Find the "Job Openings" section
-    if "Job Openings" in page_text:
-        start = page_text.find("Job Openings")
-        end = page_text.find("Brace Yourself GamesConnect with us:SteamDiscordYouTube")
-        job_section = page_text[start:end]
-        print("Job section found:")
-        print(job_section)
-        if job_section.strip() == "Job Openings":
-            print("No Job Openings found")
-        else:
-            print(job_section)
-    else:
-        print("Job Openings  section not found")
+    for scraper in scrapers:
+        try:
+            scraper()
+        except Exception as e:
+            print(e)
 
 
-def check_jobs():
-    check_brace_yourself_jobs()
+def run_jimmy():
+    """Run Jimmy's crawler"""
+    print("🔍 Running Jimmy's job crawler...")
+    scrapers = [brace_yourself_games.fetch_jobs]
+
+    for scraper in scrapers:
+        try:
+            scraper()
+        except Exception as e:
+            print(e)
+
+
+def main():
+    print("🚀 Initiating Vancouver Jobs Monitor")
+    print("=" * 50)
+
+    # Run Emanuel's crawler
+    run_emanuel()
+    print("\n" + "=" * 50)
+
+    # Run Jimmy's crawler
+    run_jimmy()
+    print("\n" + "=" * 50)
+
+    print(f"🎉 Job monitoring complete!")
 
 
 if __name__ == "__main__":
-    check_jobs()
+    main()
