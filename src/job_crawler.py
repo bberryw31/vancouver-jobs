@@ -24,7 +24,7 @@ def check_brace_yourself_jobs():
         else:
             print(job_section)
     else:
-        print("Job Openings section not found")
+        print("Job Openings  section not found")
 
 
 def check_jobs():
