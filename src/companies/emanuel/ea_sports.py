@@ -8,8 +8,6 @@ def fetch_ea_jobs():
     articles = soup.find_all(id=lambda x: x and x.startswith("article--"))
     articles = soup.find_all(id=lambda x: x and x.startswith("article--"))
     for a in articles:
-        listing = [line.strip() for line in a.text.split()]
+        listing = [line.strip() for line in a.text.split() if "senior" not in a.text.lower()]
         print(listing)
 
-
-fetch_ea_jobs()

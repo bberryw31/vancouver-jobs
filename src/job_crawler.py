@@ -1,11 +1,11 @@
 # from companies.emanuel import
 from companies.jimmy import brace_yourself_games
-
+from companies.emanuel import ea_sports
 
 def run_emanuel():
     """Run Emanuel's crawler"""
     print("🔍 Running Emanuel's job crawler...")
-    scrapers = []
+    scrapers = [ea_sports.fetch_ea_jobs()]
 
     for scraper in scrapers:
         try:
