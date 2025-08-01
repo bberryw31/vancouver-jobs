@@ -15,13 +15,21 @@ def check_brace_yourself_jobs():
     # Find the "Job Openings" section
     if "Job Openings" in page_text:
         start = page_text.find("Job Openings")
-        end = page_text.find("Connect with us:SteamDiscordYouTube")
+        end = page_text.find("Brace Yourself GamesConnect with us:SteamDiscordYouTube")
         job_section = page_text[start:end]
         print("Job section found:")
         print(job_section)
+        if job_section.strip() == "Job Openings":
+            print("No Job Openings found")
+        else:
+            print(job_section)
     else:
         print("Job Openings section not found")
 
 
-if __name__ == "__main__":
+def check_jobs():
     check_brace_yourself_jobs()
+
+
+if __name__ == "__main__":
+    check_jobs()

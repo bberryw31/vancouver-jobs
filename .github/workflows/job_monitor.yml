@@ -26,4 +26,4 @@ jobs:
     - name: Check for job openings
       run: |
         cd src
-        python job-crawler.py
+        python job_crawler.py
