@@ -44,8 +44,6 @@ def fetch_jobs():
                         "url": job_url
                     }
                     vancouver_jobs.append(job_data)
-                    print(job_data)
-
             except:
                 continue
 
