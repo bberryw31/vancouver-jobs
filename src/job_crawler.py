@@ -1,6 +1,7 @@
 # from companies.emanuel import
-from companies.jimmy import brace_yourself_games
+from companies.jimmy import brace_yourself_games, demonware
 from companies.emanuel import ea_sports
+from job_exporter import save_jobs
 
 def run_emanuel():
     """Run Emanuel's crawler"""
@@ -17,28 +18,36 @@ def run_emanuel():
 def run_jimmy():
     """Run Jimmy's crawler"""
     print("🔍 Running Jimmy's job crawler...")
-    scrapers = [brace_yourself_games.fetch_jobs]
+    scrapers = [demonware.fetch_jobs]
+
+    collected_jobs = []
 
     for scraper in scrapers:
         try:
-            scraper()
+            collected_jobs.extend(scraper())
         except Exception as e:
             print(e)
+
+    print(collected_jobs)
+    return collected_jobs
 
 
 def main():
     print("🚀 Initiating Vancouver Jobs Monitor")
     print("=" * 50)
 
+    all_collected_jobs = []
+
+    # TODO: Update crawler to use Selenium and return in correct structure
     # Run Emanuel's crawler
-    run_emanuel()
-    print("\n" + "=" * 50)
+    # run_emanuel()
+    # print("\n" + "=" * 50)
 
     # Run Jimmy's crawler
-    run_jimmy()
-    print("\n" + "=" * 50)
+    all_collected_jobs.extend(run_jimmy())
 
-    print(f"🎉 Job monitoring complete!")
+    if all_collected_jobs:
+        save_jobs(all_collected_jobs)
 
 
 if __name__ == "__main__":
