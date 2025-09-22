@@ -34,17 +34,13 @@ def fetch_jobs():
 
                 title = job_link.get_attribute("data-ph-at-job-title-text")
                 location = job_link.get_attribute("data-ph-at-job-location-text")
-                category = job_link.get_attribute("data-ph-at-job-category-text")
-                job_id = job_link.get_attribute("data-ph-at-job-id-text")
                 job_url = job_link.get_attribute("href")
 
                 if location and 'vancouver' in location.lower():
                     job_data = {
-                        "company": "Demonware",
+                        "company": company,
                         "title": title,
                         "location": location,
-                        "department": category,
-                        "job_id": job_id,
                         "url": job_url
                     }
                     vancouver_jobs.append(job_data)
