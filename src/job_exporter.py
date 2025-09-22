@@ -21,17 +21,9 @@ def save_jobs(all_jobs):
 
     # Save JSON
     json_file = os.path.join(data_dir, "vancouver_jobs_latest.json")
-    export_data = {
-        "export_info": {
-            "timestamp": timestamp,
-            "total_jobs": len(all_jobs),
-            "companies": list(set(job.get('company', 'Unknown') for job in all_jobs))
-        },
-        "jobs": all_jobs
-    }
 
     with open(json_file, 'w', encoding='utf-8') as file:
-        json.dump(export_data, file, indent=2, ensure_ascii=False)
+        json.dump(all_jobs, file, indent=2, ensure_ascii=False)
 
     # Save CSV
     csv_file = os.path.join(data_dir, "vancouver_jobs_latest.csv")
