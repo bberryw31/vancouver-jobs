@@ -28,7 +28,6 @@ def run_jimmy():
         except Exception as e:
             print(e)
 
-    print(collected_jobs)
     return collected_jobs
 
 
