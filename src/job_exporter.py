@@ -9,17 +9,19 @@ def save_jobs(all_jobs):
     data_dir = "../.github/data"
     os.makedirs(data_dir, exist_ok=True)
 
+    # Abort if no jobs found
     if not all_jobs:
         print("No jobs to export")
         return
 
+    # Get current time for timestamp
     timestamp = datetime.now().isoformat()
 
     # Add timestamp to each job
     for job in all_jobs:
         job['scraped_at'] = timestamp
 
-    # Save JSON
+    # Save JSON (flat for sql import)
     json_file = os.path.join(data_dir, "vancouver_jobs_latest.json")
 
     with open(json_file, 'w', encoding='utf-8') as file:
