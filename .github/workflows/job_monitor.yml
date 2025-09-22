@@ -19,6 +19,11 @@ jobs:
       with:
         python-version: '3.13.1'
 
+    - name: Install Chrome and ChromeDriver
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+
     - name: Install dependencies
       run: |
         pip install -r src/requirements.txt
@@ -27,4 +32,3 @@ jobs:
       run: |
         cd src
         python job_crawler.py
-
