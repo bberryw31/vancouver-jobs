@@ -35,11 +35,3 @@ jobs:
       run: |
         cd src
         python job_crawler.py
-
-    - name: Commit and push changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add .github/data/
-        git commit -m "Update job listings" || exit 0
-        git push
